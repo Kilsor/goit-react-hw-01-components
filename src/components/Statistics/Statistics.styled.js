@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const getColor = percentage => {
-    console.log(percentage)
-  if (percentage < 20) {
+const getColor = prop => {
+  // console.log(prop)
+  if (prop.value < 20) {
     return 'red';
-  } else if (percentage < 40) {
+  } else if (prop.value < 40) {
     return 'orange';
-  } else if (percentage < 60) {
+  } else if (prop.value < 60) {
     return 'blue';
   } else {
     return 'green';

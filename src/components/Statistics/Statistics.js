@@ -17,7 +17,7 @@ export const Statistics = ({ stats }) => {
           <StatsItem key={stat.id}>
             <StatsItemWrap>
               <Label>{stat.label}</Label>
-              <Percentage>{stat.percentage}%</Percentage>
+              <Percentage value={stat.percentage}>{stat.percentage}%</Percentage>
             </StatsItemWrap>
           </StatsItem>
         ))}
