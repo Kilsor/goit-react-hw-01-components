@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
-const getColor = prop => {
-  // console.log(prop)
-  if (prop.value < 20) {
-    return 'red';
-  } else if (prop.value < 40) {
-    return 'orange';
-  } else if (prop.value < 60) {
-    return 'blue';
+const getColor = props => {
+  if (props.value < 20) {
+    return props.theme.colors.red;
+  } else if (props.value < 40) {
+    return props.theme.colors.orange;
+  } else if (props.value < 60) {
+    return props.theme.colors.blue;
   } else {
-    return 'grey';
+    return props.theme.colors.grey;
   }
 };
 
 export const Stats = styled.div`
   width: 300px;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.white};
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -27,17 +26,17 @@ export const Title = styled.h2`
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: ${props => props.theme.colors.text};
 `;
 
 export const StatsList = styled.ul`
   list-style: none;
   display: flex;
   justify-content: space-between;
-  padding: 0;
+  padding: 8px;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 183, 255, 0.253);
+  background-color: ${props => props.theme.colors.background};
 `;
 
 export const StatsItem = styled.li`
@@ -58,13 +57,13 @@ export const StatsItemWrap = styled.div`
 `;
 
 export const Label = styled.span`
-  font-size: 18px;
-  color: #555;
+  font-size: 16px;
+  color: ${props => props.theme.colors.secondarytext};
 `;
 
 export const Percentage = styled.span`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: ${props => props.theme.colors.text};
   margin-top: 5px;
 `;

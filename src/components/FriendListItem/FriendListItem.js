@@ -5,7 +5,7 @@ import {
   FriendName,
   } from './FriendListItem.styled';
 
-export const FriendListItem = ({ friend: { id, avatar, name, isOnline } }) => {
+export const FriendListItem = ({ friend: {avatar, name, isOnline } }) => {
   return (
     <FriendItem >
       <FriendStatus status={isOnline.toString()}></FriendStatus>

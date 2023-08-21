@@ -12,7 +12,10 @@ const theme = {
     green: 'green',
     orange: 'orange',
     blue: 'blue',
-    grey: 'grey'
+    grey: 'grey',
+    text: '#333',
+    secondarytext: '#555',
+    background:'rgba(0, 183, 255, 0.253)'
   },
 };
 
