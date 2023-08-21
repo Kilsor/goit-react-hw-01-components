@@ -9,12 +9,30 @@ import {
 } from './Statistics.styled';
 
 export const Statistics = ({ stats }) => {
+  // Створюємо об'єкт, де ключ - це stat.label, а значення - сума відповідних значень stat.percentage
+  const labelPercentageMap = {};
+
+  // Проходимося по кожному статистичному об'єкту та додаємо значення stat.percentage
+  stats.forEach(stat => {
+    if (labelPercentageMap[stat.label]) {
+      labelPercentageMap[stat.label] += stat.percentage;
+    } else {
+      labelPercentageMap[stat.label] = stat.percentage;
+    }
+  });
+
+  // Створюємо масив з унікальними значеннями label та сумами їхніх percentages
+  const aggregatedStats = Object.keys(labelPercentageMap).map(label => ({
+    label,
+    percentage: labelPercentageMap[label]
+  }));
+
   return (
     <Stats>
       <Title>Upload stats</Title>
       <StatsList>
-        {stats.map(stat => (
-          <StatsItem key={stat.id}>
+        {aggregatedStats.map(stat => (
+          <StatsItem key={stat.label}>
             <StatsItemWrap>
               <Label>{stat.label}</Label>
               <Percentage value={stat.percentage}>{stat.percentage}%</Percentage>
