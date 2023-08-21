@@ -33,9 +33,9 @@ export const Statistics = ({ stats }) => {
       <StatsList>
         {aggregatedStats.map(stat => (
           <StatsItem key={stat.label}>
-            <StatsItemWrap>
+            <StatsItemWrap  value={stat.percentage}>
               <Label>{stat.label}</Label>
-              <Percentage value={stat.percentage}>{stat.percentage}%</Percentage>
+              <Percentage>{stat.percentage}%</Percentage>
             </StatsItemWrap>
           </StatsItem>
         ))}

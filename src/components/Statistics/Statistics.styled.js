@@ -58,12 +58,12 @@ export const StatsItemWrap = styled.div`
 `;
 
 export const Label = styled.span`
-  font-size: 14px;
+  font-size: 18px;
   color: #555;
 `;
 
 export const Percentage = styled.span`
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
   margin-top: 5px;
