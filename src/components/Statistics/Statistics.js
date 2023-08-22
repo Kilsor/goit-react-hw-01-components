@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Stats,
   Title,
@@ -5,14 +6,12 @@ import {
   StatsItem,
   StatsItemWrap,
   Label,
-  Percentage
+  Percentage,
 } from './Statistics.styled';
 
-export const Statistics = ({ stats }) => {
-  // Створюємо об'єкт, де ключ - це stat.label, а значення - сума відповідних значень stat.percentage
+export const Statistics = ({ title, stats }) => {
   const labelPercentageMap = {};
 
-  // Проходимося по кожному статистичному об'єкту та додаємо значення stat.percentage
   stats.forEach(stat => {
     if (labelPercentageMap[stat.label]) {
       labelPercentageMap[stat.label] += stat.percentage;
@@ -21,19 +20,18 @@ export const Statistics = ({ stats }) => {
     }
   });
 
-  // Створюємо масив з унікальними значеннями label та сумами їхніх percentages
   const aggregatedStats = Object.keys(labelPercentageMap).map(label => ({
     label,
-    percentage: labelPercentageMap[label]
+    percentage: labelPercentageMap[label],
   }));
 
   return (
     <Stats>
-      <Title>Upload stats</Title>
+      {title && <Title>{title}</Title>}
       <StatsList>
         {aggregatedStats.map(stat => (
           <StatsItem key={stat.label}>
-            <StatsItemWrap  value={stat.percentage}>
+            <StatsItemWrap value={stat.percentage}>
               <Label>{stat.label}</Label>
               <Percentage>{stat.percentage}%</Percentage>
             </StatsItemWrap>
@@ -42,4 +40,14 @@ export const Statistics = ({ stats }) => {
       </StatsList>
     </Stats>
   );
+};
+
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
